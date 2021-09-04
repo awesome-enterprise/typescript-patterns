@@ -1,0 +1,67 @@
+@startuml
+
+class OSFactoryChooser {
++getFactory(): OSFactory;
+}
+
+package AbstractLayer <<Rectangle>> {
+  together {
+    interface  Window
+    interface Button
+  }
+
+  together {
+      interface OSFactory {
+        +getWindow(): Window
+        +getButton(): Button
+      }
+  }
+}
+
+package Windows <<Rectangle>> {
+  class WindowsAbstractFactory {
+    +getWindow(): Window
+    +getButton(): Button
+  }
+  together {
+    class WindowsWindow
+    class WindowsButton
+  }
+}
+
+package Linux <<Rectangle>> {
+  class LinuxAbstractFactory {
+    +getWindow(): Window
+    +getButton(): Button
+  }
+  together {
+    class LinuxWindow
+    class LinuxButton
+  }
+}
+
+
+class ClientApp
+
+ClientApp --> OSFactoryChooser
+ClientApp --> OSFactory
+ClientApp --> Window
+ClientApp --> Button
+
+Window ^-- WindowsWindow
+Window ^-- LinuxWindow
+
+Button ^-- WindowsButton
+Button ^-- LinuxButton
+
+OSFactory ^-- WindowsAbstractFactory
+OSFactory ^-- LinuxAbstractFactory
+
+OSFactoryChooser::getFactory --> OSFactory
+
+
+LinuxAbstractFactory --> LinuxButton
+LinuxAbstractFactory --> LinuxWindow
+WindowsAbstractFactory --> WindowsButton
+WindowsAbstractFactory --> WindowsWindow
+@enduml
