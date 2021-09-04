@@ -12,3 +12,5 @@
 Класс `VehicalCreator` будет ответственен за создание объектов.
 
 Схему uml можно посмотреть в файле [файле](./doc/fabric-method.puml)
+
+![img](./doc/img.png)
