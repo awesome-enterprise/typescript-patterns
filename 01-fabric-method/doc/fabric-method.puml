@@ -1,0 +1,28 @@
+@startuml
+interface   Vehicle {
+  +deliver()
+}
+
+class Track {
+    +deliver()
+}
+
+class Ship {
+    +deliver()
+}
+
+class Logistic {
+  +createTransport(): Vehicle
+}
+
+class Delivery {
+    makeDelivery(items);
+}
+note top of Delivery : метод makeDelivery(items) \n вызывает под капотом Logistic.createTransport \n и отправляет item на vehicle.deliver()
+Delivery o-- Logistic
+
+Vehicle ^-- Track
+Vehicle ^-- Ship
+
+
+@enduml
