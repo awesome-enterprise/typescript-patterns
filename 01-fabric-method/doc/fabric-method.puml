@@ -20,7 +20,7 @@ class Delivery {
 }
 note top of Delivery : метод makeDelivery(items) \n вызывает под капотом Logistic.createTransport \n и отправляет item на vehicle.deliver()
 Delivery o-- Logistic
-
+Logistic o-- Vehicle
 Vehicle ^-- Track
 Vehicle ^-- Ship
 
