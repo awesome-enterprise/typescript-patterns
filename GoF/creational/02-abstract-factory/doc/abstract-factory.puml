@@ -58,10 +58,11 @@ OSFactory ^-- WindowsAbstractFactory
 OSFactory ^-- LinuxAbstractFactory
 
 OSFactoryChooser::getFactory --> OSFactory
+OSFactoryChooser --> LinuxAbstractFactory
+OSFactoryChooser --> WindowsAbstractFactory
 
-
-LinuxAbstractFactory --> LinuxButton
-LinuxAbstractFactory --> LinuxWindow
-WindowsAbstractFactory --> WindowsButton
-WindowsAbstractFactory --> WindowsWindow
+LinuxAbstractFactory::getButton --> LinuxButton
+LinuxAbstractFactory::getWindow --> LinuxWindow
+WindowsAbstractFactory::getButton --> WindowsButton
+WindowsAbstractFactory::getWindow --> WindowsWindow
 @enduml
